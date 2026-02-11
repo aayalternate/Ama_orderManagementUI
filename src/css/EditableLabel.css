@@ -1,0 +1,17 @@
+.label{
+    display: flex;
+    align-items: center;
+    background-color: blue;
+    gap: 5px;
+}
+.buttons{
+    display: flex;
+    gap:5px;
+}
+input{
+    width: 50vw;
+    height: 35px;
+}
+span{
+    width: 50vw;
+}
