@@ -6,12 +6,13 @@ function EditableLabel (props){
 
     const [EditMode,SetEditMode]=useState(false);
     const [Text,SetText]=useState(props.name);
-    const [saved,SetSaved]=useState(props.name);
 
 
 
     function handleCancel(){
+        SetText(props.name);
         SetEditMode(false);
+
     }
     function handleSave(){
         if (Text.trim()==""){
@@ -19,11 +20,9 @@ function EditableLabel (props){
             return
         }
         SetEditMode(false);
-        SetSaved(Text);
         
     }
     function handleEdit(){
-        SetText(saved);
         SetEditMode(true);
     }
 
@@ -38,7 +37,7 @@ function EditableLabel (props){
         <>
             {!EditMode ? (
                 <div className="label">
-                <span>{saved}</span>
+                <span>{Text}</span>
                 <div className="buttons">
 
                 <button onClick={handleEdit}>Edit</button>
