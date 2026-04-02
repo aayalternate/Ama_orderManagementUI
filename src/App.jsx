@@ -26,7 +26,7 @@ function App(){
   return(
     <div className="ItemList">
     {
-      List.map((item)=> (<EditableLabel name={item.Name} key={item.itemd}/>))
+      List.map((item)=> (<EditableLabel name={item.Name} key={item.Id}/>))
     }
     </div>
   );
