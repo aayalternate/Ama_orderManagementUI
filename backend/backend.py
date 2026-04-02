@@ -1,5 +1,6 @@
 import mysql.connector
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 #some thing called cors
 #===============================================================================
@@ -43,4 +44,18 @@ def get_items():
     cur.close()
 
     return res
+
+
+class Item(BaseModel):
+    id : int
+    name : str
+
+@app.post("/items")
+def updateItemName(item : Item):
+    print(item.name)
+
+    return({
+        "message" : "item recieved",
+        "body" : item
+    })
 

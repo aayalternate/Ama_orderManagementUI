@@ -20,6 +20,7 @@ function EditableLabel (props){
             return
         }
         SetEditMode(false);
+        props.onUpdate(props.id,props.name);
         
     }
     function handleEdit(){

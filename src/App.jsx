@@ -10,10 +10,31 @@ function App(){
     console.log(data)
     SetList(data)
   }
+
+
+  const updateItemName = async (item_id,item_name) => {
+
+    console.log(typeof item_id,typeof item_name);
+    const response = await fetch("http://127.0.0.1:8000/items",{
+      method:"POST",
+      headers : {
+        "content-type" : "application/json"
+      },
+      body:JSON.stringify({
+        id : item_id,
+        name: item_name
+      })
+    })
+
+    const data = await response.json();           //just prints the status later should be modified to respond to user based on statuses
+    console.log(data);
+  }
   
   useEffect(()=>
     {
+      // console.log("running");
       fetch_data();
+      // updateItemName();
     },[])
     
     
@@ -26,7 +47,7 @@ function App(){
   return(
     <div className="ItemList">
     {
-      List.map((item)=> (<EditableLabel name={item.Name} key={item.Id}/>))
+      List.map((item)=> (<EditableLabel name={item.Name} id={item.Id} key={item.Id} onUpdate={updateItemName}/>))
     }
     </div>
   );
