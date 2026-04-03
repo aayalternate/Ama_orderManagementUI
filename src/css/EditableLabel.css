@@ -1,17 +1,126 @@
-.label{
-    display: flex;
-    align-items: center;
-    background-color: blue;
-    gap: 5px;
+* {
+  box-sizing: border-box;
 }
-.buttons{
-    display: flex;
-    gap:5px;
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #e8f5e9;
+  margin: 0;
+  padding: 24px;
 }
-input{
-    width: 50vw;
-    height: 35px;
+
+h1 {
+  color: #111111;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #2e7d32;
+  padding-bottom: 10px;
 }
-span{
-    width: 50vw;
+
+.ItemList {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+.label:hover {
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.label span {
+  font-size: 15px;
+  color: #111111;
+  flex: 1;
+}
+
+.label input {
+  flex: 1;
+  font-size: 15px;
+  color: #111111;
+  border: 1.5px solid #2e7d32;
+  border-radius: 6px;
+  padding: 6px 10px;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.label input:focus {
+  border-color: #1b5e20;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.buttons button {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.buttons button:active {
+  transform: scale(0.97);
+}
+
+/* Edit button — outlined green */
+.buttons button:only-child {
+  background-color: #ffffff;
+  color: #2e7d32;
+  border: 1.5px solid #4caf50;
+}
+
+.buttons button:only-child:hover {
+  background-color: #e8f5e9;
+}
+
+/* Save button — solid green (first child in multi-button group) */
+.buttons button:first-child:not(:only-child) {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.buttons button:first-child:not(:only-child):hover {
+  background-color: #388e3c;
+}
+
+/* Cancel button — white/neutral */
+.buttons button:nth-child(2) {
+  background-color: #ffffff;
+  color: #555;
+  border: 1.5px solid #ccc;
+}
+
+.buttons button:nth-child(2):hover {
+  background-color: #f5f5f5;
+}
+
+/* Delete button — light red */
+.buttons button:last-child:not(:only-child):not(:nth-child(2)) {
+  background-color: #ffffff;
+  color: #c62828;
+  border: 1.5px solid #ef9a9a;
+}
+
+.buttons button:last-child:not(:only-child):not(:nth-child(2)):hover {
+  background-color: #ffebee;
 }

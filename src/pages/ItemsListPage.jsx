@@ -1,5 +1,6 @@
 import { use, useEffect, useState } from "react";
 import EditableLabel from "../componets/EditableLabel";
+import "../css/ItemsListPage.css"
 
 function ItemListPage(){
 
