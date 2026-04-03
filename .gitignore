@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 backend/env/
+backend/__pycache__/backend.cpython-311.pyc
 dist
 dist-ssr
 *.local
