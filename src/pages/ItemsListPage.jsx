@@ -25,10 +25,20 @@ function ItemListPage(){
         id : item_id,
         name: item_name
       })
-    })
+    });
 
     const data = await response.json();           //just prints the status later should be modified to respond to user based on statuses
     console.log(data);
+  }
+
+
+  const deleteItem = async(id)=>{
+    const response = await fetch(`http://127.0.0.1:8000/items/${id}`,{
+      method:"DELETE",
+    });
+    const data = await response.json()
+    console.log(data)
+    await fetch_data();
   }
   
   useEffect(()=>
@@ -49,7 +59,7 @@ function ItemListPage(){
     <div className="ItemList">
     <h1>Modify Item List</h1>
     {
-      List.map((item)=> (<EditableLabel name={item.Name} id={item.Id} key={item.Id} onUpdate={updateItemName}/>))
+      List.map((item)=> (<EditableLabel name={item.Name} id={item.Id} key={item.Id} onUpdate={updateItemName} onDelete={deleteItem}/>))
     }
     </div>
   );

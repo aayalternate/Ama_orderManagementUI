@@ -54,7 +54,7 @@ function EditableLabel (props){
 
                 <button onClick={handleSave}>Save</button>
                 <button onClick={handleCancel}>Cancel</button>
-                <button onClick={()=>props.delete(props.name)}>Delete</button>
+                <button onClick={()=>props.onDelete(props.id)}>Delete</button>
                 </div>
                 </div>
 

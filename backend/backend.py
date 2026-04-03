@@ -40,8 +40,8 @@ def get_items():
 
     res=cur.fetchall()
 
-    conn.close()
     cur.close()
+    conn.close()
 
     return res
 
@@ -54,8 +54,34 @@ class Item(BaseModel):
 def updateItemName(item : Item):
     print(item.name)
 
+    conn , cur = database_connect()
+    query="UPDATE items SET Name = %s WHERE Id=%s;"
+    print(query)
+
+    cur.execute(query,(item.name,item.id))
+
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
     return({
         "message" : "item recieved",
         "body" : item
     })
 
+@app.delete("/items/{id}")
+def delete(id: int):
+    conn,cur = database_connect()
+
+    cur.execute("DELETE FROM items WHERE Id=%s",(id,))
+
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return({
+        "message":"deleted",
+        "id":id
+    })
