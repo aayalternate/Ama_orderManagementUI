@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/StockLabel.css"
 
 function StockLabel(props){
-    const [text, setText] = useState(props.quantity);
+    const [text, setText] = useState(String(props.quantity));
     return(
         <div>
             <div className="label">
@@ -12,8 +12,7 @@ function StockLabel(props){
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-                { text !== props.quantity && <button>Save</button>}
-                {/* <button>Save</button> */}
+                { text !== String(props.quantity) && <button>Save</button>}
             </div>
         </div>
     );

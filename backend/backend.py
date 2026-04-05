@@ -85,3 +85,24 @@ def delete(id: int):
         "message":"deleted",
         "id":id
     })
+
+
+#stock page
+#=============================================
+
+@app.get("/stock")
+def get_stock():
+    conn , cur = database_connect()
+
+    query= "select id,name,quantity from items join stock on Id=ItemId;"
+    cur.execute(query)
+
+    res=cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return res
+
+
+#=====================================
