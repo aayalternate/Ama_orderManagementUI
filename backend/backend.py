@@ -50,6 +50,7 @@ class Item(BaseModel):
     id : int
     name : str
 
+
 @app.post("/items")
 def updateItemName(item : Item):
     print(item.name)
@@ -89,6 +90,12 @@ def delete(id: int):
 
 #stock page
 #=============================================
+from fastapi import HTTPException
+
+class StockItem(BaseModel):
+    id : int
+    quantity : int
+
 
 @app.get("/stock")
 def get_stock():
@@ -103,6 +110,25 @@ def get_stock():
     conn.close()
 
     return res
+
+@app.post("/stock")
+def update_stock(item : StockItem):
+    conn , cur = database_connect()
+
+    query= "update stock set quantity=%s where ItemId=%s;"
+    print(query)
+    cur.execute(query,(item.quantity,item.id))
+
+    conn.commit()
+
+
+    if cur.rowcount == 0:
+        raise HTTPException(status_code=404, detail="Item not found")
+
+    cur.close()
+    conn.close()
+
+    return {"message":"change made successfully"}
 
 
 #=====================================
